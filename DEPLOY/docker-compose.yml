@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  jobfetcher:
+    build: .
+    container_name: jobfetcher
+    env_file:
+      - .env
+    volumes:
+      - .:/jobfetcher
+    command: ["python", "-m", "job_cli", "fetch", "job", "--departement", "07", "--type-contrat", "CDI", "--limit", "50"]
