@@ -8,13 +8,13 @@ test:
 	pytest tests/
 
 run:
-	python -m job_cli fetch job --type-contrat CDI --departement 07 --limit 50
+	python -m job_cli fetch job --type-contrat CDI --departement 07
 
 docker-build:
 	docker build -t jobfetcher .
 
 docker-run:
-	docker run --rm jobfetcher fetch job --type-contrat CDI --departement 07 --limit 50
+	docker run --rm jobfetcher fetch job --type-contrat CDI --departement 07
 
 # Setup Cron Job to run daily at 6 AM
 setup-cron:

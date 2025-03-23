@@ -1,6 +1,6 @@
 # 🚀 France Travail Job Scraper (Flexible & Automatisé)
 
-![Repo Size](https://img.shields.io/badge/Repo%20Size-2.3MB-blue)
+![Repo Size](https://img.shields.io/badge/Repo%20Size-506.9kB-blue)
 ![Last Commit](https://img.shields.io/badge/Last%20Commit-March%2025,%202025-orange)
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![Docker](https://img.shields.io/badge/Docker-Supported-blue)
@@ -26,7 +26,7 @@ Ce projet est un **extracteur de données** qui récupère les offres d'emploi e
 
 _💡 Exemple de commande CLI :_
 
-`python -m job_cli fetch job --type-contrat CDI --departement 07 --limit 50
+`python -m job_cli fetch job --type-contrat CDI --departement 07 
 `
 ---
 
@@ -40,7 +40,6 @@ _💡 Exemple de commande CLI :_
 ## 📦 Gestion des Données & Configuration
 - 🛠 **Pydantic** → gestion des paramètres et validation des données 
 - 🏗 **Pydantic Settings** → gestion de la configuration avec validation
-- 📊 **Pandas** → manipulation et analyse de données  
 
 ## 🖥️ Interface & Automatisation
 - 🔄 **Tenacity** → gestion des tentatives et des erreurs 
@@ -91,8 +90,12 @@ _💡 Exemple de commande CLI :_
 │ │── 📄 test_config.py  # Assertion de la bonne config
 │ │── 📄 test_auth.py    # Assertion de l'authentification
 │ │── 📄 test_offres.py  # Assertion de la récupération des offres d'emploi
-│── 📁 old_version/      # old scripts
-│ │── 📄 job_fetcher.py  # Script principal : Récupération des offres (old version)
+│── 📁 outputs/          # Outputs fichiers CSVs   & entreprises competences.csv
+│ │── 📁 DEPARTEMENT_ZIPCODE/  # 01..101
+│ │ │── 📁 TYPE_CONTRAT/       # CDI|CDD|MIS
+│ │ │ │── 📄 offres_d_emploi.csv  
+│ │ │ │── 📄 entreprises.csv   
+│ │ │ │── 📄 competences.csv   
 │── 📄 job_fetcher.log   # Logs les appels d'API
 │── 📄 requirements.txt  # Dépendances Python
 │── 📄 .env              # Variables d'environnement (API keys, secrets)
@@ -125,7 +128,7 @@ make run
 ```
 ou
 ```bash
-python -m job_cli fetch job --type-contrat [CDI|CDD|INTERIM] --departement x --limit x
+python -m job_cli fetch job --type-contrat [CDI|CDD|MIS] --departement x 
 ```
 
 ---
@@ -171,7 +174,7 @@ make docker-run
 ```
 ou
 ```bash
-docker run --rm jobfetcher fetch job --type-contrat CDI --departement 07 --limit 50
+docker run --rm jobfetcher fetch job --type-contrat CDI --departement 07 
 ```
 
 

@@ -15,4 +15,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 USER job_fetcher
 
 ENTRYPOINT ["python", "-m", "job_cli"]
-CMD ["fetch", "job", "--departement", "07", "--type-contrat", "CDI", "--limit", "50"]
+CMD ["fetch", "job", "--departement", "07", "--type-contrat", "CDI"]
