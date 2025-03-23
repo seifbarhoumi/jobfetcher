@@ -8,4 +8,4 @@ services:
       - .env
     volumes:
       - .:/jobfetcher
-    command: ["python", "-m", "job_cli", "fetch", "job", "--departement", "07", "--type-contrat", "CDI", "--limit", "50"]
+    command: ["python", "-m", "job_cli", "fetch", "job", "--departement", "07", "--type-contrat", "CDI"]

@@ -6,6 +6,6 @@ conda activate jobfetcher_env
 
 cd /jobfetcher
 
-python -m job_cli fetch job --type-contrat CDI --departement 07 --limit 50 --export-csv
+python -m job_cli fetch job --type-contrat CDI --departement 07 --export-csv
 
 conda deactivate

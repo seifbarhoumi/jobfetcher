@@ -1,23 +1,37 @@
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
+from urllib.parse import urlencode
 
 from utils.config import settings
 from utils.logger import logger
+from requests.auth import HTTPBasicAuth
 
 
 @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=1, max=4))
 def get_access_token():
     """Récupère le token d'accès OAuth2 depuis l'API de France Travail avec gestion des erreurs."""
+
     data = {
         "grant_type": "client_credentials",
         "client_id": settings.CLIENT_ID,
         "client_secret": settings.CLIENT_SECRET,
         "scope": settings.API_SCOPE
     }
-    print("🔍 Données envoyées :", data)
+
+    headers = {
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+    # Encode the data as URL-encoded form data
+    encoded_data = urlencode(data)
+    print("🔍 Encoded Data:", encoded_data)
 
     try:
-        response = requests.post(settings.AUTH_URL, data=data, timeout=10)
+        response = requests.post(
+            settings.AUTH_URL,
+            headers=headers,
+            data=data,
+            timeout=settings.TIMEOUT
+        )
         response.raise_for_status()  # Lève une exception si code 4xx ou 5xx
 
         json_response = response.json()

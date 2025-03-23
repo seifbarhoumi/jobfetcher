@@ -7,7 +7,7 @@ from utils.logger import logger
 
 
 @retry(stop=stop_after_attempt(3), wait=wait_fixed(2))
-def get_offres(departement: str, type_contrat: str, limit: int):
+def get_offres(departement: str, type_contrat: str):
     """Récupère les offres d'emploi filtrées selon la config"""
 
     token = get_access_token()
@@ -18,8 +18,8 @@ def get_offres(departement: str, type_contrat: str, limit: int):
 
     headers = {"Authorization": f"Bearer {token}"}
     params = {"departement": departement,
-              "typeContrat": type_contrat,
-              "limit": limit}
+              "typeContrat": type_contrat
+              }
 
     logger.info(f"📡 Requête API : {params}")
 

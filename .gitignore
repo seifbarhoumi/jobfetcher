@@ -5,7 +5,6 @@ __pycache__/
 *.log
 *.csv
 .idea/*
-old_version/*
-
+outputs/*
 tests/test_auth.py
 tests/test_offres.py
